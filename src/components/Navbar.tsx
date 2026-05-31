@@ -1,87 +1,122 @@
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
-];
+// Nav links ke liye TypeScript interface
+interface NavLink {
+  label: string;
+  href: string;
+}
 
-const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+const Navbar: React.FC = () => {
+  // Mobile menu open/close state ke liye
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  // Active link manage karne ke liye (by default 'Home')
+  const [activeLink, setActiveLink] = useState<string>('Home');
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const navLinks: NavLink[] = [
+    { label: 'Home', href: '#' },
+    { label: 'Services', href: '#' },
+    { label: 'Projects', href: '#' },
+    { label: 'About', href: '#' },
+    { label: 'Process', href: '#' },
+    { label: 'Reviews', href: '#' },
+    { label: 'Contact', href: '#' },
+  ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'glass py-4'
-          : 'bg-transparent py-6'
-      }`}
-    >
-      <nav className="container-narrow flex items-center justify-between">
-        {/* Brand */}
-        <a
-          href="#home"
-          onClick={(e) => handleNavClick(e, '#home')}
-          className="text-lg font-semibold tracking-tight text-foreground hover:text-muted-foreground transition-colors"
-        >
-          Mohit Diwakar
-        </a>
+    <header className="w-full bg-transparent px-[8%] py-6 flex justify-between items-center relative font-['Plus_Jakarta_Sans',sans-serif]">
+      {/* Logo */}
+      <div className="text-[22px] font-extrabold text-[#0f172a] tracking-tight">
+        <span className="text-[#0052ff]">&lt;/&gt;</span> CodeByMohit
+      </div>
 
-        {/* Navigation Links */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+      {/* Desktop Navigation Links */}
+      <nav className="hidden md:flex items-center space-x-[30px]">
+        {navLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            onClick={() => setActiveLink(link.label)}
+            className={`text-[15px] font-medium transition-all duration-300 no-underline pb-1
+              ${activeLink === link.label 
+                ? 'text-[#0052ff] border-b-2 border-[#0052ff]' 
+                : 'text-[#475569] hover:text-[#0052ff] hover:border-b-2 hover:border-[#0052ff]'
+              }`}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-foreground"
-          aria-label="Toggle menu"
-        >
+      {/* Action Button (Desktop) */}
+      <div className="hidden md:block">
+        <button className="bg-[#0052ff] hover:bg-[#003ecb] text-white px-6 py-3 rounded-[30px] font-semibold flex items-center gap-2 transition-all duration-300 cursor-pointer">
+          Let's Talk
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
             fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2.5}
             stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            className="w-4 h-4"
           >
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="18" x2="21" y2="18" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5l6 6m0 0l-6 6m6-6H3" />
           </svg>
         </button>
-      </nav>
+      </div>
+
+      {/* Hamburger Menu Icon (Mobile Only) */}
+      <button 
+        className="md:hidden text-[#0f172a] focus:outline-none cursor-pointer"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={2}
+          stroke="currentColor"
+          className="w-7 h-7"
+        >
+          {isOpen ? (
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          ) : (
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          )}
+        </svg>
+      </button>
+
+      {/* Mobile Dropdown Menu */}
+      {isOpen && (
+        <div className="absolute top-full left-0 w-full bg-white shadow-md p-6 flex flex-col space-y-4 md:hidden z-50 border-t border-gray-100">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={() => {
+                setActiveLink(link.label);
+                setIsOpen(false);
+              }}
+              className={`text-[15px] font-medium py-2 border-b border-gray-50
+                ${activeLink === link.label ? 'text-[#0052ff]' : 'text-[#475569]'}`}
+            >
+              {link.label}
+            </a>
+          ))}
+          <button className="bg-[#0052ff] hover:bg-[#003ecb] text-white px-6 py-3 rounded-[30px] font-semibold flex items-center justify-center gap-2 transition-all duration-300 w-full">
+            Let's Talk
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2.5}
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5l6 6m0 0l-6 6m6-6H3" />
+            </svg>
+          </button>
+        </div>
+      )}
     </header>
   );
 };

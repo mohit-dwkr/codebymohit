@@ -1,22 +1,24 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import Featured from '@/components/Featured';
+import Services from '@/components/Services';
+import Process from '@/components/Process';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main>
         <Hero />
-        <Skills />
+        <Featured/>
+        <Services/>
+        <Process/>
         <Projects />
         <About />
         <Contact />
-      </main>
       <Footer />
     </div>
   );
