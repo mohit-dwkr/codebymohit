@@ -17,19 +17,19 @@ const Contact: React.FC = () => {
           </span>
 
           {/* Main Title Heading */}
-          <h2 className="mt-[25px] text-[42px] md:text-[64px] font-bold text-white leading-[1.1] relative z-10">
+          <h2 className="mt-[25px] text-[30px] md:text-[64px] font-bold text-white leading-[1.1] relative z-10">
             Have a Project in Mind?
           </h2>
 
           {/* Description Paragraph */}
-          <p className="max-w-[700px] mx-auto mt-[25px] text-[#cbd5e1] text-[16px] md:text-[18px] leading-[1.9] relative z-10">
+          <p className="max-w-[700px] mx-auto mt-[25px] text-[#cbd5e1] text-[14px] md:text-[18px] leading-[1.9] relative z-10">
             Looking for a modern website, admin panel or custom management system? Let's discuss your idea and turn it into a professional digital experience.
           </p>
 
           {/* Action Buttons Layout */}
           <div className="mt-[45px] flex justify-center relative z-10">
             <a 
-              href="#" 
+              href="https://wa.me/919630955951"
               className="no-underline font-semibold bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-30 py-4 px-[30px] rounded-[14px] transition-all duration-300 hover:-translate-y-0.75 shadow-lg shadow-blue-500/20 text-center"
             >
               Let's Talk

@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
+import { MessageSquare } from 'lucide-react';
 
-// Nav links ke liye TypeScript interface
 interface NavLink {
   label: string;
   href: string;
 }
 
 const Navbar: React.FC = () => {
-  // Mobile menu open/close state ke liye
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  // Active link manage karne ke liye (by default 'Home')
   const [activeLink, setActiveLink] = useState<string>('Home');
 
   const navLinks: NavLink[] = [
@@ -23,7 +21,8 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="w-full bg-transparent px-[8%] py-6 flex justify-between items-center relative font-['Plus_Jakarta_Sans',sans-serif]">
+    // YAHAN BADLAAV KIYA HAI: bg-transparent hatakar sticky, top-0, z-50 aur glassmorphism background lagaya hai
+    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-100/50 px-[8%] py-4 flex justify-between items-center font-['Plus_Jakarta_Sans',sans-serif] transition-all duration-300">
       {/* Logo */}
       <div className="text-[22px] font-extrabold text-[#0f172a] tracking-tight">
         <span className="text-[#0052ff]">&lt;/&gt;</span> CodeByMohit
@@ -37,8 +36,8 @@ const Navbar: React.FC = () => {
             href={link.href}
             onClick={() => setActiveLink(link.label)}
             className={`text-[15px] font-medium transition-all duration-300 no-underline pb-1
-              ${activeLink === link.label 
-                ? 'text-[#0052ff] border-b-2 border-[#0052ff]' 
+              ${activeLink === link.label
+                ? 'text-[#0052ff] border-b-2 border-[#0052ff]'
                 : 'text-[#475569] hover:text-[#0052ff] hover:border-b-2 hover:border-[#0052ff]'
               }`}
           >
@@ -49,7 +48,14 @@ const Navbar: React.FC = () => {
 
       {/* Action Button (Desktop) */}
       <div className="hidden md:block">
-        <button className="bg-[#0052ff] hover:bg-[#003ecb] text-white px-6 py-3 rounded-[30px] font-semibold flex items-center gap-2 transition-all duration-300 cursor-pointer">
+        <a
+          // NOTE: '91' ke aage apna 10-digit real WhatsApp number daal dena bina space ya '+' ke
+          href="https://wa.me/919630955951"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex bg-[#0052ff] hover:bg-[#003ecb] text-white px-6 py-3 rounded-[30px] font-semibold items-center gap-2 transition-all duration-300 cursor-pointer no-underline"
+        >
+          <MessageSquare className="w-4 h-4" />
           Let's Talk
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -61,11 +67,11 @@ const Navbar: React.FC = () => {
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5l6 6m0 0l-6 6m6-6H3" />
           </svg>
-        </button>
+        </a>
       </div>
 
       {/* Hamburger Menu Icon (Mobile Only) */}
-      <button 
+      <button
         className="md:hidden text-[#0f172a] focus:outline-none cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -102,7 +108,14 @@ const Navbar: React.FC = () => {
               {link.label}
             </a>
           ))}
-          <button className="bg-[#0052ff] hover:bg-[#003ecb] text-white px-6 py-3 rounded-[30px] font-semibold flex items-center justify-center gap-2 transition-all duration-300 w-full">
+
+          <a
+            // NOTE: '91' ke aage apna 10-digit real WhatsApp number daal dena bina space ya '+' ke
+            href="https://wa.me/919630955951"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#0052ff] hover:bg-[#003ecb] text-white px-6 py-3 rounded-[30px] font-semibold flex items-center justify-center gap-2 transition-all duration-300 w-full no-underline"
+          >
             Let's Talk
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +127,8 @@ const Navbar: React.FC = () => {
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5l6 6m0 0l-6 6m6-6H3" />
             </svg>
-          </button>
+          </a>
+
         </div>
       )}
     </header>

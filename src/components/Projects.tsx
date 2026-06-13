@@ -13,30 +13,30 @@ const Projects: React.FC = () => {
   // Projects data array
   const projectsData: Project[] = [
     {
-      imageSrc: "Screenshot (1112).png",
+      imageSrc: "og-image copy 2.png",
       category: "Client Project",
       title: "Coaching Management System",
       description: "Complete admission, study material and student management platform.",
-      projectUrl: "#"
+      projectUrl: "https://coaching-2.netlify.app/"
     },
     {
-      imageSrc: "/images/project2.jpg",
+      imageSrc: "/og-image copy.png",
       category: "Personal Project",
-      title: "Developer Portfolio Website",
-      description: "Modern portfolio designed to showcase projects and services.",
-      projectUrl: "#"
+      title: "Modern Cafe Website",
+      description: "A modern Cafe website with whatsaap table booking system and admin panel.",
+      projectUrl: "https://cafe-shops.netlify.app/"
     },
     {
-      imageSrc: "/images/project3.jpg",
+      imageSrc: "/p-1.png",
       category: "Concept Project",
-      title: "School Website Concept",
-      description: "Professional school website focused on admissions and online presence.",
-      projectUrl: "#"
-    }
+      title: "E-Commerce Website",
+      description: "A modern e commerce platform .",
+      projectUrl: "https://icommerce-by-mohit.netlify.app/"
+    },
   ];
 
   return (
-    <section className="py-[120px] bg-white w-full font-['Plus_Jakarta_Sans',sans-serif] ">
+    <section className="py-[120px] bg-white w-full font-['Plus_Jakarta_Sans',sans-serif] " id="projects">
       <div className="w-[90%] max-w-[1300px] mx-auto">
         
         {/* Section Header */}
@@ -70,10 +70,10 @@ const Projects: React.FC = () => {
 
               {/* Project Info / Details */}
               <div className="padding-28 p-[28px]">
-                {/* Category Badge */}
+                {/* Category Badge
                 <span className="inline-block px-[14px] py-2 bg-[#dbeafe] text-[#2563eb] rounded-[50px] text-[13px] font-semibold mb-[18px]">
                   {project.category}
-                </span>
+                </span> */}
 
                 {/* Title */}
                 <h3 className="text-[24px] font-bold text-[#0f172a] mb-[14px]">
