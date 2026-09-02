@@ -13,11 +13,11 @@ const Projects: React.FC = () => {
   // Projects data array
   const projectsData: Project[] = [
     {
-      imageSrc: "og-image copy 2.png",
+      imageSrc: "Screenshot (1656).png",
       category: "Client Project",
       title: "Coaching Management System",
       description: "Complete admission, study material and student management platform.",
-      projectUrl: "https://coaching-2.netlify.app/"
+      projectUrl: "https://coaching-3.netlify.app/"
     },
     {
       imageSrc: "/og-image copy.png",

@@ -3,13 +3,13 @@ import React from 'react';
 const Featured: React.FC = () => {
   // Features list array data
   const projectFeatures: string[] = [
-    "Online Admission Form",
-    "Student Dashboard",
-    "Study Material Management",
-    "Admin Panel",
-    "Notices & Updates",
-    "Mobile Friendly"
-  ];
+  "Online Admission",
+  "Student Dashboard",
+  "Study Material & Notes",
+  "Smart Admin Panel",
+   "Attendance Management",
+   "Fees Management",
+];
 
   return (
     <section className="py-[60px] sm:py-[120px] bg-white w-full font-['Plus_Jakarta_Sans',sans-serif]">
@@ -34,9 +34,9 @@ const Featured: React.FC = () => {
           {/* Project Image Column */}
           <div className="w-full">
             <img 
-              src="/Screenshot (1112).png" 
+              src="/Screenshot (1656).png" 
               alt="Project Preview" 
-              className="w-full block border-2 border-slate-200 rounded-[20px] shadow-[0_15px_40px_rgba(15,23,42,0.08)]"
+              className="w-full block border-2 border-slate-300 rounded-[20px] shadow-[0_15px_40px_rgba(15,23,42,0.08)]"
             />
           </div>
 
@@ -68,7 +68,7 @@ const Featured: React.FC = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-[15px]">
               <a 
-                href="https://coaching-2.netlify.app" 
+                href="https://coaching-3.netlify.app" 
                 className="inline-block bg-[#2563eb] text-white no-underline p-[15px_26px] rounded-[14px] font-semibold transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-md shadow-blue-500/10 text-center text-[15px] sm:text-[16px]"
               >
                 View Project &rarr;
